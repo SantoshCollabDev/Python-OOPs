@@ -18,24 +18,25 @@ Example: name as string, price as float etc as shown below...
 
 '''
 
-
 class Item:
-  def __init__(self, name: str, price: float, quantity=0):
 
-    # Validate the arguments before setting object attributes
+  def __init__(self, name: str, price: float, quantity=0):  # specify data type for values expected to receive
+    # VALIDATE RECEIVED ARGUMENTS - before setting object attributes - USING ASSERT
     assert price >= 0, f"Price {price} is not greater or equal to Zero!"
     assert quantity >= 0, f"Quantity {quantity} is not greater or equal to Zero!" 
-
     # Set Object Attributes 
     self.name = name
     self.price = price
     self.quantity = quantity
   
-  def calculate_total_price(self):
-    return self.price * self.quantity
+  def calculate_total_price(self):   # method & NO NEED TO PASS price & quantity
+    return self.price * self.quantity   # accessed through object
     
 item1 = Item("Phone", 100, 5)
 item2 = Item("Laptop", 1000, 3)
+
+# Note after instantiation also we can define new attributes to an object
+# item1.has_numpad = false   # the attribute has_numpad is not part of the constructor
 
 print(item1.calculate_total_price())
 print(item2.calculate_total_price())
